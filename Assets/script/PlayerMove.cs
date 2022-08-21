@@ -38,7 +38,12 @@ public class PlayerMove : MonoBehaviour
 
     private bool isInteractable;
     private PlayerAction player_Action;
-   // private PlayerMove move;
+
+    [Header("animation")]
+    private Animator anim;
+
+
+    // private PlayerMove move;
     private void Awake()
     {
         player_Action = new PlayerAction();
@@ -93,8 +98,8 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
 
-      
-     
+
+        anim = this.GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
 
         // Lock cursor
@@ -114,6 +119,7 @@ public class PlayerMove : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
+            anim.SetBool("isWalk", true);
             //----------------------------------
             // ### move according to camera
             //float TargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -130,6 +136,11 @@ public class PlayerMove : MonoBehaviour
             bool isRunning = Input.GetKey(KeyCode.LeftShift);
             speed = (isRunning ? runningSpeed : walkingSpeed);
             characterController.Move(moveDir.normalized * speed * Time.deltaTime);
+
+        }
+        else
+        {
+            anim.SetBool("isWalk", false) ;
 
         }
         if (characterController.isGrounded && velocityY < 0f)
