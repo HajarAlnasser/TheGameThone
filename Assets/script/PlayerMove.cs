@@ -114,7 +114,15 @@ public class PlayerMove : MonoBehaviour
 
         if (direction.magnitude >= 0.1f)
         {
-            float TargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            //----------------------------------
+            // ### move according to camera
+            //float TargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+
+            // ### move according to to world direction
+            float TargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            //----------------------------------
+
+
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, TargetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             moveDir = Quaternion.Euler(0f, TargetAngle, 0f) * Vector3.forward;
