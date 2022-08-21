@@ -48,8 +48,11 @@ public class PlayerMove : MonoBehaviour
 
     private void OnEnable()
     {
+
         player_Action.PlayerControl.Enable();
     }
+
+ 
 
     private void playerInteract(InputAction.CallbackContext obj)
     {
@@ -60,7 +63,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnDisable()
     {
-        player_Action.PlayerControl.Interaction.started -= playerInteract;
+        //player_Action.PlayerControl.Interaction.started -= playerInteract;
 
         player_Action.PlayerControl.Disable();
 
@@ -130,6 +133,11 @@ public class PlayerMove : MonoBehaviour
         velocityY -= gravity * gravityMultiplier * Time.deltaTime;
         characterController.Move(Vector3.up * velocityY * Time.deltaTime);
     }
+
+
+
+
+    
 
 }
 
