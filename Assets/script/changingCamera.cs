@@ -6,31 +6,55 @@ using Cinemachine;
 public class changingCamera : MonoBehaviour
 {
 
-    [SerializeField] private GameObject playerNewPos, player;
+    [SerializeField] private GameObject playerNewPos, player, fade;
     [SerializeField] private CinemachineVirtualCamera oldCam, newCam;
-    bool isMoved = false;
+    private Animator anim;
     // Start is called before the first frame update
 
-  
+    private void Start()
+    {
+        anim = fade.GetComponent<Animator>();
+
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            isMoved = true;
-            player.GetComponent<CharacterController>().enabled=false;
-            player.transform.position = playerNewPos.transform.position;
-            player.GetComponent<CharacterController>().enabled=true;
-
-
-            newCam.gameObject.SetActive(true);
-            newCam.Priority = 10;
-
-            oldCam.Priority = 9;
-            oldCam.gameObject.SetActive(false);
+            fade.SetActive(true);
+            anim.enabled = true;
+            StartCoroutine(fadeAnimation());
+       
 
           
         }
     }
 
 
+
+    IEnumerator fadeAnimation()
+    {
+
+        yield return new WaitForSeconds(1);
+        player.GetComponent<PlayerMove>().enabled = false;
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = playerNewPos.transform.position;
+        player.GetComponent<CharacterController>().enabled = true;
+        player.GetComponent<PlayerMove>().enabled = true;
+
+
+        newCam.gameObject.SetActive(true);
+
+        oldCam.gameObject.SetActive(false);
+
+
+        yield return new WaitForSeconds(2.3f);
+
+        anim.enabled = true;
+        fade.SetActive(false); ;
+
+
+
+
+
+    }
 }
