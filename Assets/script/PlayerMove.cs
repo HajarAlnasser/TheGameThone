@@ -122,10 +122,10 @@ public class PlayerMove : MonoBehaviour
             anim.SetBool("isWalk", true);
             //----------------------------------
             // ### move according to camera
-            //float TargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float TargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
 
             // ### move according to to world direction
-            float TargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+            //float TargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             //----------------------------------
 
 
