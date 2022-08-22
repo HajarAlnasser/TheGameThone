@@ -155,8 +155,14 @@ public class PlayerMove : MonoBehaviour
 
 
 
+    public void stopAnimation()
+    {
 
-    
+        anim.SetBool("isWalk", false);
+
+
+    }
+
 
 }
 

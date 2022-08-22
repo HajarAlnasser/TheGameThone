@@ -33,13 +33,14 @@ public class changingCamera : MonoBehaviour
 
     IEnumerator fadeAnimation()
     {
+        player.GetComponent<PlayerMove>().stopAnimation(); ;
+
         player.GetComponent<PlayerMove>().enabled = false;
 
         yield return new WaitForSeconds(1);
         player.GetComponent<CharacterController>().enabled = false;
         player.transform.position = playerNewPos.transform.position;
         player.GetComponent<CharacterController>().enabled = true;
-        player.GetComponent<PlayerMove>().enabled = true;
 
 
         newCam.gameObject.SetActive(true);
@@ -47,7 +48,11 @@ public class changingCamera : MonoBehaviour
         oldCam.gameObject.SetActive(false);
 
 
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(1);
+        player.GetComponent<PlayerMove>().enabled = true;
+
+        yield return new WaitForSeconds(1.3f);
+
 
         anim.enabled = true;
         fade.SetActive(false); ;
