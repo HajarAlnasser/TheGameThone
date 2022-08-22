@@ -33,9 +33,9 @@ public class changingCamera : MonoBehaviour
 
     IEnumerator fadeAnimation()
     {
+        player.GetComponent<PlayerMove>().enabled = false;
 
         yield return new WaitForSeconds(1);
-        player.GetComponent<PlayerMove>().enabled = false;
         player.GetComponent<CharacterController>().enabled = false;
         player.transform.position = playerNewPos.transform.position;
         player.GetComponent<CharacterController>().enabled = true;
