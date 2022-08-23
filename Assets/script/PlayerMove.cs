@@ -43,6 +43,10 @@ public class PlayerMove : MonoBehaviour
     private Animator anim;
 
 
+
+    [SerializeField] private GameObject sfxObj;
+    //public AudioSource audioSource;
+    //public AudioClip walkSounds;
     // private PlayerMove move;
     private void Awake()
     {
@@ -98,6 +102,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
 
+        //audioSource = sfxObj.GetComponent<AudioSource>();
 
         anim = this.GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
@@ -127,7 +132,10 @@ public class PlayerMove : MonoBehaviour
             // ### move according to to world direction
             //float TargetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             //----------------------------------
-
+           
+            //if(soundCheck())
+            //    playFootStepClip();
+            
 
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, TargetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -166,6 +174,31 @@ public class PlayerMove : MonoBehaviour
 
     }
 
+    //public void playFootStepClip()
+    //{
+    //    StartCoroutine(walkSound());
+    //    audioSource.pitch = UnityEngine.Random.Range(1f, 1.5f);
+    //    // audioSource.pitch = 1;
+    //}
+
+    //public bool soundCheck()
+    //{
+    //    if (!audioSource.isPlaying)
+    //        return true;
+    //    else
+    //        return false;
+
+    //}
+
+    IEnumerator walkSound()
+    {
+        sfxObj.SetActive(true);
+
+        yield return new WaitForSeconds(1.5f);
+        sfxObj.SetActive(false);
+
+
+    }
 
 }
 
