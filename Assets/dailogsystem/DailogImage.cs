@@ -9,5 +9,6 @@ public class DailogImage
     public Sprite nameImage;
   
     public Sprite[] sentencesImmage;
+    public Sprite[] expresionImages;
 
 }

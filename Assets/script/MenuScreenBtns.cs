@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class MenuScreenBtns : MonoBehaviour
 {
 
-    [SerializeField] private GameObject instruction, mainPanel, whenStart, backButton, backTonInstructionButton;
+    [SerializeField] private GameObject instruction, mainPanel, whenStart, backButton, backTonInstructionButton, backToOptionButton, optionPanel, musicButton;
 
 
     private void Start()
@@ -18,7 +18,7 @@ public class MenuScreenBtns : MonoBehaviour
     {
         Time.timeScale = 1;
         print("startGame");
-        //SceneManager.LoadScene();
+        SceneManager.LoadScene("waleed");
 
     }
     public void InstructionPannel()
@@ -31,6 +31,16 @@ public class MenuScreenBtns : MonoBehaviour
 
 
 
+    } public void optionPannel()
+    {
+        mainPanel.SetActive(false);
+        optionPanel.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(musicButton);
+
+
+
     }
     public void backToMenuPanel()
     {
@@ -39,6 +49,13 @@ public class MenuScreenBtns : MonoBehaviour
 
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(backTonInstructionButton);
+
+    }    public void CLOSEOption()
+    {      optionPanel.SetActive(false);
+        mainPanel.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(backToOptionButton);
 
     }
 
