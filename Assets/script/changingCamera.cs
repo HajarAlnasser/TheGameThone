@@ -61,7 +61,7 @@ public class changingCamera : MonoBehaviour
 
             player.GetComponent<PlayerMove>().enabled = false;
 
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.4f);
             player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = playerNewPos.transform.position;
             player.transform.localRotation = playerNewPos.transform.localRotation;
@@ -76,7 +76,7 @@ public class changingCamera : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             player.GetComponent<PlayerMove>().enabled = true;
 
-            yield return new WaitForSeconds(1.8f);
+            yield return new WaitForSeconds(0.4f);
 
 
             anim.enabled = true;

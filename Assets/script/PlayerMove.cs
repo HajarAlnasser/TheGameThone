@@ -136,6 +136,8 @@ public class PlayerMove : MonoBehaviour
             bool isRunning = Input.GetKey(KeyCode.LeftShift);
             speed = (isRunning ? runningSpeed : walkingSpeed);
             characterController.Move(moveDir.normalized * speed * Time.deltaTime);
+            anim.SetBool("IsRunning", true);
+
 
         }
         else
@@ -149,6 +151,7 @@ public class PlayerMove : MonoBehaviour
         {
             velocityY = Mathf.Sqrt(jumpHeight * 2f * gravity);
         }
+       
         velocityY -= gravity * gravityMultiplier * Time.deltaTime;
         characterController.Move(Vector3.up * velocityY * Time.deltaTime);
     }
