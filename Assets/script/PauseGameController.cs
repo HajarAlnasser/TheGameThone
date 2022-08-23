@@ -3,11 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
+
+
 
 public class PauseGameController : MonoBehaviour
 {
 
-    [SerializeField] private GameObject pause;
+    [SerializeField] private GameObject pause, pausePanel, optionPanel,musicButton, backToOptionButton;
     private bool isPaused=false;
 
     private PlayerAction player_Action;
@@ -33,7 +37,23 @@ public class PauseGameController : MonoBehaviour
 
     }
 
-    private void pauseGame(InputAction.CallbackContext obj)
+    public void pauseGame(InputAction.CallbackContext obj)
+    {
+        if (isPaused == false)
+        {
+            Time.timeScale = 0;
+            pause.SetActive(true);
+            isPaused = true;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            pause.SetActive(false);
+            isPaused = false;
+
+        }
+
+    }    public void pauseGame2()
     {
         if (isPaused == false)
         {
@@ -51,6 +71,36 @@ public class PauseGameController : MonoBehaviour
 
     }
 
+    public void backToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void optionPannel()
+    {
+        pausePanel.SetActive(false);
+        optionPanel.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(musicButton);
+
+
+
+    }
+    public void backToPausePanel()
+    {
+        optionPanel.SetActive(false);
+        pausePanel.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(backToOptionButton);
+
+    }
+
+
+
+
+
     // Start is called before the first frame update
-   
+
 }
