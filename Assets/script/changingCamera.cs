@@ -80,14 +80,12 @@ public class changingCamera : MonoBehaviour
 
 
             anim.enabled = true;
-            fade.SetActive(false); 
+            fade.SetActive(false); ;
         }
 
 
 
 
+
     }
-
-
-
 }
