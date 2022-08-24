@@ -518,7 +518,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 837013908}
   sentencesText: {fileID: 1095515849}
-  exprisionwendow: {fileID: 0}
+  exprisionwendow: {fileID: 607087731}
+  dailogueImag:
+    nameImage: {fileID: 0}
+    sentencesImmage: []
+    expresionImages: []
 --- !u!4 &299114074
 Transform:
   m_ObjectHideFlags: 0

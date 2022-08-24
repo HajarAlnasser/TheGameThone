@@ -10,13 +10,14 @@ public class DailogueManagerImage : MonoBehaviour
     public Image exprisionwendow;
     private Queue<Sprite> ssentencesImage;
     private Queue<Sprite> expresionImage;
-    DailogImage dailogImage;
+   public DailogImage dailogueImag;
+
     // Start is called before the first frame update
     void Start()
     {
         expresionImage = new Queue<Sprite>();
         ssentencesImage = new Queue<Sprite>();
-        StartDailog(dailogImage);
+        StartDailog(dailogueImag);
     }
 
     // Update is called once per frame
