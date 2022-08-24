@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/waleed end.unity
     guid: 5e1e3d370f97f584a9f10612491ecd2d
+  - enabled: 1
+    path: Assets/Scenes/MyScene.unity
+    guid: b11ca5e7a239647128b0926115b1aedb
   m_configObjects: {}
