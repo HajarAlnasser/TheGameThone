@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 public class playerStandInLine : MonoBehaviour
@@ -41,7 +42,7 @@ public class playerStandInLine : MonoBehaviour
 
         music.SetActive(true);
         sarieee.SetActive(false);
-
+        jumoToCinema();
     }
 
     private void OnDisable()
@@ -105,30 +106,54 @@ public class playerStandInLine : MonoBehaviour
         }
 
 
-      IEnumerator classStu()
-        {
-            yield return new WaitForSeconds(70);
+   
 
-            jumpToClass();
+    }
 
 
-       }
+    IEnumerator classStu()
+    {
+        yield return new WaitForSeconds(70);
+
+        jumpToClass();
 
 
-         void jumpToClass()
-        {
+    }
 
 
-            newCamera.SetActive(false);
-            camClass.SetActive(true);
-
-            textPressAny.SetActive(false);
+    void jumpToClass()
+    {
 
 
-            music.SetActive(true);
-            sarieee.SetActive(false);
+        newCamera.SetActive(false);
+        camClass.SetActive(true);
 
-        }
+        textPressAny.SetActive(false);
+
+
+        music.SetActive(true);
+        sarieee.SetActive(false);
+
+        jumoToCinema();
+
+
+
+    }
+
+    private void jumoToCinema()
+    {
+
+        StartCoroutine(jumpToCi());
+
+    }
+
+    IEnumerator jumpToCi()
+    {
+        yield return new WaitForSeconds(10);
+
+        SceneManager.LoadScene("waleed-Cinema");
+
+
 
     }
 

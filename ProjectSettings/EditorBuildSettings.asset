@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/waleedNight.unity
     guid: 1be3d82e938c95d44acc86fe6b6ae8f9
+  - enabled: 1
+    path: Assets/Scenes/waleed-School.unity
+    guid: 19e7623531951964e9850448a41cc6fd
   m_configObjects: {}

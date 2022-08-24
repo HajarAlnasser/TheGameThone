@@ -22,7 +22,7 @@ public class WaleedCode : MonoBehaviour
 
         Debug.Log("Loaded");
 
-        SceneManager.LoadScene("waleedNight");
+        SceneManager.LoadScene("waleed end");
         //FindObjectOfType<AudioManager>().Play("Ambiente");
         //Health.ResetLife();
 
