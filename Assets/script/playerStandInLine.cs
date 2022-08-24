@@ -36,11 +36,7 @@ public class playerStandInLine : MonoBehaviour
         newCamera.SetActive(false);
         camClass.SetActive(true);
 
-        player.GetComponent<CharacterController>().enabled = false;
-        player.transform.position = pointInClass.transform.position;
-        player.GetComponent<CharacterController>().enabled = true;
-
-        anim.SetBool("isSit", true);
+      
         textPressAny.SetActive(false);
 
         music.SetActive(true);
@@ -126,12 +122,6 @@ public class playerStandInLine : MonoBehaviour
             newCamera.SetActive(false);
             camClass.SetActive(true);
 
-            player.GetComponent<CharacterController>().enabled = false;
-            player.transform.position = pointInClass.transform.position;
-            player.transform.localEulerAngles = new Vector3 (0,-90,0);
-            player.GetComponent<CharacterController>().enabled = true;
-
-            anim.SetBool("isSit", true);
             textPressAny.SetActive(false);
 
 
