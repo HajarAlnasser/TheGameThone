@@ -46,7 +46,7 @@ public class changingCamera : MonoBehaviour
             fadeToNewScene.SetActive(true);
             yield return new WaitForSeconds(1);
             print("new scene");
-            //SceneManager.LoadScene(sceneName);
+           SceneManager.LoadScene(sceneName);
 
 
 
