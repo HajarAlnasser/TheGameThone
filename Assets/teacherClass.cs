@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class teacherClass : MonoBehaviour
 {
     public GameObject a, b, c,d;
@@ -143,6 +143,7 @@ public class teacherClass : MonoBehaviour
         b.SetActive(false);
         c.SetActive(false);
         d.SetActive(false);
+        SceneManager.LoadScene("MyScene");
     }
     public void wrongAnswer()
     {
@@ -152,6 +153,7 @@ public class teacherClass : MonoBehaviour
         b.SetActive(false);
         c.SetActive(false);
         d.SetActive(false);
+        SceneManager.LoadScene("MyScene");
 
     }
     private void Update()
