@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 
 public class guysesChat : MonoBehaviour
 {
@@ -24,8 +26,14 @@ public class guysesChat : MonoBehaviour
     public Sprite abdulrahmansScript;
     public Sprite abdulrahmansExpression;
     public GameObject dailogue,a,b;
-    
 
+    public GameObject Button;
+
+    private void Start()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(Button);
+    }
     public void Change()
     {
         if (scripr.sprite == defolt)

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+
 
 public class spriteChanger : MonoBehaviour
 {
@@ -17,8 +19,14 @@ public class spriteChanger : MonoBehaviour
     public Sprite secondx;
     public Sprite thiredx;
     public Sprite forthx;
-    public GameObject dailogue;
+    public GameObject dailogue,Button;
 
+
+    private void Start()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+        EventSystem.current.SetSelectedGameObject(Button);
+    }
     public void Change()
     {
         if (scripr.sprite == defolt)
