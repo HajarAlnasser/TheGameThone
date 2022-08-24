@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 public class playerStandInLine : MonoBehaviour
@@ -37,12 +36,16 @@ public class playerStandInLine : MonoBehaviour
         newCamera.SetActive(false);
         camClass.SetActive(true);
 
-      
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = pointInClass.transform.position;
+        player.GetComponent<CharacterController>().enabled = true;
+
+        anim.SetBool("isSit", true);
         textPressAny.SetActive(false);
 
         music.SetActive(true);
         sarieee.SetActive(false);
-        jumoToCinema();
+
     }
 
     private void OnDisable()
@@ -106,54 +109,36 @@ public class playerStandInLine : MonoBehaviour
         }
 
 
-   
+      IEnumerator classStu()
+        {
+            yield return new WaitForSeconds(70);
 
-    }
-
-
-    IEnumerator classStu()
-    {
-        yield return new WaitForSeconds(70);
-
-        jumpToClass();
+            jumpToClass();
 
 
-    }
+       }
 
 
-    void jumpToClass()
-    {
+         void jumpToClass()
+        {
 
 
-        newCamera.SetActive(false);
-        camClass.SetActive(true);
+            newCamera.SetActive(false);
+            camClass.SetActive(true);
 
-        textPressAny.SetActive(false);
+            player.GetComponent<CharacterController>().enabled = false;
+            player.transform.position = pointInClass.transform.position;
+            player.transform.localEulerAngles = new Vector3 (0,-90,0);
+            player.GetComponent<CharacterController>().enabled = true;
 
-
-        music.SetActive(true);
-        sarieee.SetActive(false);
-
-        jumoToCinema();
-
-
-
-    }
-
-    private void jumoToCinema()
-    {
-
-        StartCoroutine(jumpToCi());
-
-    }
-
-    IEnumerator jumpToCi()
-    {
-        yield return new WaitForSeconds(10);
-
-        SceneManager.LoadScene("waleed-Cinema");
+            anim.SetBool("isSit", true);
+            textPressAny.SetActive(false);
 
 
+            music.SetActive(true);
+            sarieee.SetActive(false);
+
+        }
 
     }
 

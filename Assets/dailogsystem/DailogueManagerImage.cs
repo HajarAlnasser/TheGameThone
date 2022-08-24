@@ -10,7 +10,7 @@ public class DailogueManagerImage : MonoBehaviour
     public Image exprisionwendow;
     private Queue<Sprite> ssentencesImage;
     private Queue<Sprite> expresionImage;
-   public DailogImage dailogueImag;
+    public DailogImage dailogueImag;
 
     // Start is called before the first frame update
     void Start()
@@ -21,27 +21,27 @@ public class DailogueManagerImage : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void StartDailog(DailogImage dailogueImage)
+    public void StartDailog(DailogImage dailogImage)
     {
         //Debug.Log("Starting new conversation with" + dailogueImage.sprite);
-       nameText.sprite= dailogueImage.nameImage;
+        nameText.sprite = dailogImage.nameImage;
         expresionImage.Clear();
         ssentencesImage.Clear();
-        foreach (Sprite sentencesImmage in dailogueImage.sentencesImmage)
+        foreach (Sprite sentencesImmage in dailogImage.sentencesImmage)
         {
             ssentencesImage.Enqueue(sentencesImmage);
         }
         DisplayNextSentences();
-        foreach (Sprite expresionImages in dailogueImage.expresionImages)
+        foreach (Sprite expresionImages in dailogImage.expresionImages)
         {
             expresionImage.Enqueue(expresionImages);
         }
         DisplayNextSentences();
-    
-}
+
+    }
     public void DisplayNextSentences()
     {
-        if (ssentencesImage.Count == 0||expresionImage.Count==0)
+        if (ssentencesImage.Count == 0 || expresionImage.Count == 0)
         {
             EndDailogue();
             return;
@@ -49,7 +49,7 @@ public class DailogueManagerImage : MonoBehaviour
         }
         Sprite sentencesImmage = ssentencesImage.Dequeue();
         Sprite expresionImages = expresionImage.Dequeue();
-       // Debug.Log(sentencesImmage);
+        // Debug.Log(sentencesImmage);
         sentencesText.sprite = sentencesImmage;
         exprisionwendow.sprite = expresionImages;
     }

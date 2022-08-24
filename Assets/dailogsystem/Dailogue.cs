@@ -4,8 +4,8 @@ using UnityEngine;
 [System.Serializable]
 public class Dailogue
 {
-public string name;
-    [TextArea(3,10)]
-public string[] sentences;
+public Sprite name;
+   
+public Sprite[] sentences;
    
 }
