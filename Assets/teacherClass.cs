@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
-
 public class teacherClass : MonoBehaviour
 {
     public GameObject a, b, c,d;
@@ -32,14 +30,8 @@ public class teacherClass : MonoBehaviour
     public Sprite eithx;
     public Sprite ninthx;
     public GameObject toDestroy;
+ 
 
-    public GameObject Button;
-
-    private void Start()
-    {
-        EventSystem.current.SetSelectedGameObject(null);
-        EventSystem.current.SetSelectedGameObject(Button);
-    }
     public void Change()
     {
         if (scripr.sprite == defolt)
