@@ -53,6 +53,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""anyButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""6bea0257-35f8-4a58-87d8-83948bf93d71"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -165,6 +174,50 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""42d4911e-90b8-4384-aa34-6e429f13ab8b"",
+                    ""path"": ""*/{Submit}"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""anyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d6bd483-bd5c-4604-9c8c-c71e4b8255a7"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""anyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f520281-c220-4a94-9a9b-38f7affe84b4"",
+                    ""path"": ""<DualShockGamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""anyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5f923343-5ce2-46a8-be93-f1898b663da8"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""anyButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -176,6 +229,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_PlayerControl_Move = m_PlayerControl.FindAction("Move", throwIfNotFound: true);
         m_PlayerControl_Interaction = m_PlayerControl.FindAction("Interaction", throwIfNotFound: true);
         m_PlayerControl_pause = m_PlayerControl.FindAction("pause", throwIfNotFound: true);
+        m_PlayerControl_anyButton = m_PlayerControl.FindAction("anyButton", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -238,6 +292,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_Move;
     private readonly InputAction m_PlayerControl_Interaction;
     private readonly InputAction m_PlayerControl_pause;
+    private readonly InputAction m_PlayerControl_anyButton;
     public struct PlayerControlActions
     {
         private @PlayerAction m_Wrapper;
@@ -245,6 +300,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerControl_Move;
         public InputAction @Interaction => m_Wrapper.m_PlayerControl_Interaction;
         public InputAction @pause => m_Wrapper.m_PlayerControl_pause;
+        public InputAction @anyButton => m_Wrapper.m_PlayerControl_anyButton;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -263,6 +319,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @pause.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnPause;
                 @pause.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnPause;
                 @pause.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnPause;
+                @anyButton.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnAnyButton;
+                @anyButton.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnAnyButton;
+                @anyButton.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnAnyButton;
             }
             m_Wrapper.m_PlayerControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -276,6 +335,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @pause.started += instance.OnPause;
                 @pause.performed += instance.OnPause;
                 @pause.canceled += instance.OnPause;
+                @anyButton.started += instance.OnAnyButton;
+                @anyButton.performed += instance.OnAnyButton;
+                @anyButton.canceled += instance.OnAnyButton;
             }
         }
     }
@@ -285,5 +347,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnAnyButton(InputAction.CallbackContext context);
     }
 }
