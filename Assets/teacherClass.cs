@@ -151,7 +151,7 @@ public class teacherClass : MonoBehaviour
         b.SetActive(false);
         c.SetActive(false);
         d.SetActive(false);
-        SceneManager.LoadScene("waleed-Cinema");
+        SceneManager.LoadScene("School 2");
     }
     public void wrongAnswer()
     {
@@ -161,7 +161,7 @@ public class teacherClass : MonoBehaviour
         b.SetActive(false);
         c.SetActive(false);
         d.SetActive(false);
-        SceneManager.LoadScene("waleed-Cinema");
+        SceneManager.LoadScene("School 2");
 
     }
     private void Update()
