@@ -7,7 +7,7 @@ public class playerStandInLine : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField] GameObject music, sarieee, player, point, newCamera,oldCamera, camClass, pointInClass, textPressAny,p;
+    [SerializeField] GameObject music, sarieee, player, point, newCamera,oldCamera, camClass, pointInClass, textPressAny;
     private bool playerMove=false, changeCam=false;
     private AudioSource aud;
     private int speed = 2;
@@ -36,16 +36,15 @@ public class playerStandInLine : MonoBehaviour
         newCamera.SetActive(false);
         camClass.SetActive(true);
 
-        //player.GetComponent<CharacterController>().enabled = false;
-        //player.transform.position = pointInClass.transform.position;
-        //player.GetComponent<CharacterController>().enabled = true;
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = pointInClass.transform.position;
+        player.GetComponent<CharacterController>().enabled = true;
 
         anim.SetBool("isSit", true);
         textPressAny.SetActive(false);
 
         music.SetActive(true);
         sarieee.SetActive(false);
-        p.SetActive(true);
 
     }
 
@@ -127,10 +126,10 @@ public class playerStandInLine : MonoBehaviour
             newCamera.SetActive(false);
             camClass.SetActive(true);
 
-            //player.GetComponent<CharacterController>().enabled = false;
-            //player.transform.position = pointInClass.transform.position;
-            //player.transform.localEulerAngles = new Vector3 (0,-90,0);
-            //player.GetComponent<CharacterController>().enabled = true;
+            player.GetComponent<CharacterController>().enabled = false;
+            player.transform.position = pointInClass.transform.position;
+            player.transform.localEulerAngles = new Vector3 (0,-90,0);
+            player.GetComponent<CharacterController>().enabled = true;
 
             anim.SetBool("isSit", true);
             textPressAny.SetActive(false);
@@ -138,8 +137,6 @@ public class playerStandInLine : MonoBehaviour
 
             music.SetActive(true);
             sarieee.SetActive(false);
-            p.SetActive(true);
-
 
         }
 
