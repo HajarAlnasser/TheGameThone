@@ -62,6 +62,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Run"",
+                    ""type"": ""Button"",
+                    ""id"": ""314120df-14ad-4c8e-8b16-c8efa3687b86"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -218,6 +227,28 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""action"": ""anyButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""29d17469-f54f-4521-bffa-583dff32d8f6"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d5c022c5-02b8-4519-b2bc-636e1b0db015"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Run"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -230,6 +261,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         m_PlayerControl_Interaction = m_PlayerControl.FindAction("Interaction", throwIfNotFound: true);
         m_PlayerControl_pause = m_PlayerControl.FindAction("pause", throwIfNotFound: true);
         m_PlayerControl_anyButton = m_PlayerControl.FindAction("anyButton", throwIfNotFound: true);
+        m_PlayerControl_Run = m_PlayerControl.FindAction("Run", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +325,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_Interaction;
     private readonly InputAction m_PlayerControl_pause;
     private readonly InputAction m_PlayerControl_anyButton;
+    private readonly InputAction m_PlayerControl_Run;
     public struct PlayerControlActions
     {
         private @PlayerAction m_Wrapper;
@@ -301,6 +334,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         public InputAction @Interaction => m_Wrapper.m_PlayerControl_Interaction;
         public InputAction @pause => m_Wrapper.m_PlayerControl_pause;
         public InputAction @anyButton => m_Wrapper.m_PlayerControl_anyButton;
+        public InputAction @Run => m_Wrapper.m_PlayerControl_Run;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -322,6 +356,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @anyButton.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnAnyButton;
                 @anyButton.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnAnyButton;
                 @anyButton.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnAnyButton;
+                @Run.started -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnRun;
+                @Run.performed -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnRun;
+                @Run.canceled -= m_Wrapper.m_PlayerControlActionsCallbackInterface.OnRun;
             }
             m_Wrapper.m_PlayerControlActionsCallbackInterface = instance;
             if (instance != null)
@@ -338,6 +375,9 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @anyButton.started += instance.OnAnyButton;
                 @anyButton.performed += instance.OnAnyButton;
                 @anyButton.canceled += instance.OnAnyButton;
+                @Run.started += instance.OnRun;
+                @Run.performed += instance.OnRun;
+                @Run.canceled += instance.OnRun;
             }
         }
     }
@@ -348,5 +388,6 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         void OnInteraction(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
         void OnAnyButton(InputAction.CallbackContext context);
+        void OnRun(InputAction.CallbackContext context);
     }
 }

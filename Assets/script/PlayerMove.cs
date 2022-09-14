@@ -42,7 +42,7 @@ public class PlayerMove : MonoBehaviour
     [Header("animation")]
     private Animator anim;
 
-
+    bool isRunning = false;
     // private PlayerMove move;
     private void Awake()
     {
@@ -104,7 +104,18 @@ public class PlayerMove : MonoBehaviour
 
         // Lock cursor
         //    Cursor.lockState = CursorLockMode.Locked;
+         player_Action.PlayerControl.Run.performed+=onRun;
+         player_Action.PlayerControl.Run.canceled+=onNotRun;
 
+
+    }
+
+    private void onRun(InputAction.CallbackContext obj)
+    {
+        isRunning = true;
+    }   private void onNotRun(InputAction.CallbackContext obj)
+    {
+        isRunning = false;
     }
 
     void FixedUpdate()
@@ -133,16 +144,26 @@ public class PlayerMove : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
             moveDir = Quaternion.Euler(0f, TargetAngle, 0f) * Vector3.forward;
 
-            bool isRunning = Input.GetKey(KeyCode.LeftShift);
+        
             speed = (isRunning ? runningSpeed : walkingSpeed);
             characterController.Move(moveDir.normalized * speed * Time.deltaTime);
-           // anim.SetBool("IsRunning", true);
+            if (isRunning)
+            {
+                anim.SetBool("IsRun", true);
+
+            }
+            else
+            {
+                anim.SetBool("IsRun", false);
+
+            }
 
 
         }
         else
         {
-            anim.SetBool("isWalk", false) ;
+            anim.SetBool("isWalk", false);
+            anim.SetBool("IsRun", false);
 
         }
         if (characterController.isGrounded && velocityY < 0f)

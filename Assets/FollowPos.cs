@@ -8,8 +8,9 @@ public class FollowPos : MonoBehaviour
     [SerializeField] Vector3 Offset;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.position = Player.transform.position + Offset;
     }
+    
 }
